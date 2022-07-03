@@ -1,3 +1,9 @@
 # react-proyecto-base
 
-Clonar el repositorio localmente e instalar dependencias con "npm i"
+Api coingecko
+Integrantes:
+Jose Tayupo
+Benjamin Alfonzo
+Javier Munoz
+
+
