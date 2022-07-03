@@ -1,4 +1,4 @@
-# react-proyecto-base
+# Proyecto Criptomonedas
 
 Api coingecko
 Integrantes:
