@@ -16,8 +16,6 @@ const useGetCoins = () => {
 
     };
 
-    console.log( coins );
-
     useEffect(() => {
         fetchCoins();
     }, []);

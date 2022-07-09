@@ -95,8 +95,7 @@ const Dashboard = () => {
 
   }
 
-  const filterCoins = coins.filter( coin => coin.name.toLowerCase().includes( search.toLowerCase() ))
-  console.log(filterCoins)
+  const filterCoins = coins.filter( coin => coin.name.toLowerCase().includes( search.toLowerCase() ));
 
   return (
     <>

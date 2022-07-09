@@ -38,96 +38,96 @@ const columns = [
 
 const CoinsTable = ({ coins }) => {
   
-    const classes = useStyles();
-  
-    return (
-      
-      <TableContainer className={ classes.table }>
-        <Table aria-label="simple table"  >
-          <TableHead>
-            <TableRow>
+  const classes = useStyles();
 
-              { columns.map(( column ) => (
+  return (
 
-                <TableCell
-                  key={ column.id }
-                  align='center'
-                  variant='head'
-                  className={ classes.color }
-                >
-                  { column.label }
-                </TableCell>
+    <TableContainer className={ classes.table }>
+      <Table aria-label="simple table"  >
+        <TableHead>
+          <TableRow>
 
-              ))}
-             
-            </TableRow>
-          </TableHead>
-          <TableBody >
-              
-              { coins.map(( coin ) => {
-                  return (
+            { columns.map(( column ) => (
 
-                      <TableRow>
-                        
-                        <TableCell  
-                          className={ classes.color } 
-                          align="center"
-                        >
-                            <img className={ classes.images } src={ coin.image }  />
-                        </TableCell>
-                        
-                        <TableCell  
-                          className={ classes.color } 
-                          align="center"
-                        >
-                            { coin.name }
-                        </TableCell>
-                        
-                        <TableCell  
-                          className={ classes.color } 
-                          align="center"
-                        >
-                            { coin.symbol }
-                        </TableCell>
-                        
-                        <TableCell  
-                          className={ classes.color } 
-                          align="center"
-                        >
-                            ${ coin.current_price }
-                        </TableCell>
-                        
-                        <TableCell  
-                          className={ classes.color } 
-                          align="center"
-                        >
-                            ${ coin.market_cap }
-                        </TableCell>
-                        
-                        <TableCell 
-                          align="center"
-                          style={{
-                            color: coin.price_change_percentage_24h > 0 ? 'lightgreen' : 'red'
-                          }}
-                        >
-                            { coin.price_change_percentage_24h }%
-                        </TableCell>
-                        
-                        <TableCell  
-                          className={ classes.color } 
-                          align="center"
-                        >
-                            ${ coin.total_volume }
-                        </TableCell>
+              <TableCell
+                key={ column.id }
+                align='center'
+                variant='head'
+                className={ classes.color }
+              >
+                { column.label }
+              </TableCell>
+
+            ))}
+            
+          </TableRow>
+        </TableHead>
+        <TableBody >
+            
+            { coins.map(( coin ) => {
+                return (
+
+                    <TableRow key={ coin.id }>
                       
-                      </TableRow> 
+                      <TableCell
+                        className={ classes.color } 
+                        align="center"
+                      >
+                          <img className={ classes.images } src={ coin.image }  />
+                      </TableCell>
+                      
+                      <TableCell  
+                        className={ classes.color } 
+                        align="center"
+                      >
+                          { coin.name }
+                      </TableCell>
+                      
+                      <TableCell  
+                        className={ classes.color } 
+                        align="center"
+                      >
+                          { coin.symbol }
+                      </TableCell>
+                      
+                      <TableCell  
+                        className={ classes.color } 
+                        align="center"
+                      >
+                          ${ coin.current_price }
+                      </TableCell>
+                      
+                      <TableCell  
+                        className={ classes.color } 
+                        align="center"
+                      >
+                          ${ coin.market_cap }
+                      </TableCell>
+                      
+                      <TableCell 
+                        align="center"
+                        style={{
+                          color: coin.price_change_percentage_24h > 0 ? 'lightgreen' : 'red'
+                        }}
+                      >
+                          { coin.price_change_percentage_24h }%
+                      </TableCell>
+                      
+                      <TableCell  
+                        className={ classes.color } 
+                        align="center"
+                      >
+                          ${ coin.total_volume }
+                      </TableCell>
+                    
+                    </TableRow> 
 
-                  )
-              })}
+                )
+            })}
 
-          </TableBody>
-        </Table>
-      </TableContainer>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 
