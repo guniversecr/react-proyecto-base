@@ -3,6 +3,11 @@ import { useState } from 'react';
 import useGetCoins from '../../hooks/useGetCoins';
 import '../../styles/Dashboard.css';
 import Coins from '../Coins/Coins';
+import CoinsTable from '../CoinsTable/CoinsTable';
+import {Typography, makeStyles} from '@material-ui/core';
+
+
+
 
 
 const Dashboard = () => {
@@ -18,7 +23,7 @@ const Dashboard = () => {
   }
 
   const filterCoins = coins.filter( coin => coin.name.toLowerCase().includes( search.toLowerCase() ))
-
+  console.log(filterCoins)
 
   return (
     <>
@@ -27,7 +32,8 @@ const Dashboard = () => {
         <div className='search__area'>
 
           <div className='search__tittle'>
-            <h1 className='tittle'>Valor actual de Mercado, Criptomonedas</h1>
+            {/* <h1 className='tittle'>Valor actual de Mercado, Criptomonedas</h1> */}
+            <Typography variant="h3">Valor actual de Mercado, Criptomonedas</Typography>
           </div>
 
           <div className='seach__form'>
@@ -38,7 +44,7 @@ const Dashboard = () => {
 
         </div>
 
-        { filterCoins.map( coin => {
+        {/* { filterCoins.map( coin => {
           return (
 
             <Coins
@@ -53,7 +59,9 @@ const Dashboard = () => {
             />
 
           );
-        })}
+        })} */}
+
+        <CoinsTable coins={filterCoins}></CoinsTable>
         
       </div>
     </>
