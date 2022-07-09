@@ -1,13 +1,84 @@
 import React from 'react';
+import { createTheme, FormControl, Grid, Input, makeStyles, ThemeProvider, Typography } from '@material-ui/core';
 import { useState } from 'react';
 import useGetCoins from '../../hooks/useGetCoins';
-import '../../styles/Dashboard.css';
-import Coins from '../Coins/Coins';
 import CoinsTable from '../CoinsTable/CoinsTable';
-import {Typography, makeStyles} from '@material-ui/core';
 
 
+const useStyles = makeStyles (() => ({ 
 
+  root: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    color : 'white',
+    fontSize: 48,
+    fontWeight: 'bold',
+  },
+
+  searchContainer: {
+    justifyContent: 'center',
+    textAlign: 'center',
+    height: '30%',
+    '@media (max-width: 900px)': {
+      height: '27%',
+    },
+  },
+
+  searchTitle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+
+  input: {
+    width: '30vw',
+    backgroundColor: 'white',
+    padding: 9,
+    borderRadius: 3,
+    '@media (max-width: 900px)': {
+    width: '45vw'
+    },
+    '@media (max-width: 500px)': {
+    width: '60vw'
+    },
+  },
+
+  tableContainer: {
+    maxWidth: '81%',
+    maxHeight: '100%',
+    height: '70%',
+    '@media (max-width: 900px)': {
+      height: '73%',
+    },
+    alignItems: 'flex-start',
+    overflow: 'auto',
+  }
+
+}));
+
+
+const theme = createTheme();
+
+  theme.typography.h1 = {
+
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+
+    '@media ( min-width: 750px )': {
+      fontSize: '1.8rem'
+    },
+
+    [ theme.breakpoints.up( 'md') ]: {
+      fontSize: '2.1rem',
+    },
+
+
+    [ theme.breakpoints.up( 'lg') ]: {
+      fontSize: '2.7rem',
+    }
+
+};
 
 
 const Dashboard = () => {
@@ -15,6 +86,8 @@ const Dashboard = () => {
   const [ search, setSearch ] = useState( '' );
 
   const coins = useGetCoins();
+
+  const classes = useStyles();
   
   const handledChanges = event => {
 
@@ -27,45 +100,38 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className='display__area'>
 
-        <div className='search__area'>
+      <Grid container spacing={ 1 } className={ classes.root }>
 
-          <div className='search__tittle'>
-            {/* <h1 className='tittle'>Valor actual de Mercado, Criptomonedas</h1> */}
-            <Typography variant="h3">Valor actual de Mercado, Criptomonedas</Typography>
-          </div>
+        <Grid container item xs={ 12 } xm={ 8 } className={ classes.searchContainer }>
 
-          <div className='seach__form'>
-            <form>
-              <input type="text" placeholder="Buscar Moneda" className="search__input" onChange={ handledChanges }></input>
-            </form>
-          </div>
-
-        </div>
-
-        {/* { filterCoins.map( coin => {
-          return (
-
-            <Coins
-              key         = { coin.id }
-              image       = { coin.image }
-              name        = { coin.name }
-              symbol      = { coin.symbol }
-
-              price       = { coin.current_price }
-              priceChange = { coin.price_change_percentage_24h }
-              marketcap   = { coin.market_cap }
+          <Grid container item className={ classes.searchTitle }>
+            <ThemeProvider theme={ theme }>
+              <Typography variant="h1">Valor actual de Mercado, Criptomonedas</Typography>
+            </ThemeProvider>
+          </Grid>
+          
+          <FormControl>
+            <Input 
+              className={ classes.input }
+              placeholder='Buscar Crypto Moneda'
+              disableUnderline
+              onChange={ handledChanges }
             />
+          </FormControl>
 
-          );
-        })} */}
+        </Grid>
 
-        <CoinsTable coins={filterCoins}></CoinsTable>
+        <Grid container item xs={ 12 } xm={ 8 } className={ classes.tableContainer }>
+          <CoinsTable 
+            coins={ filterCoins } 
+            key={ coins.id }
+          />
+        </Grid>
+      
+      </Grid>
         
-      </div>
     </>
-
   );
 }
 
