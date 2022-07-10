@@ -27,7 +27,7 @@ const columns = [
 
   { id: 'image', label: 'Logo' },
   { id: 'name', label: 'Moneda' },
-  { id: 'symbol', label: 'Symbolo' },
+  { id: 'symbol', label: 'Symbol' },
   { id: 'current_price', label: 'Precio' },
   { id: 'market_cap', label: 'Capacidad del Mercado' },
   { id: 'price_change_percentage_24h', label: 'Últimas 24 horas' },
